@@ -55,6 +55,13 @@ sequelize.authenticate()
   .catch(err => console.error('❌ MySQL connection failed:', err.message));
 // ─────────────────────────────────────────────────────────────
 
+
+// This creates the 'users' table in MySQL if it doesn't exist yet
+// { alter: true } updates columns if you change the model later
+// Never use { force: true } in production — it DROPS and recreates the table
+sequelize.sync({ alter: true })
+  .then(() => console.log('✅ MySQL tables synced'))
+  .catch(err => console.error('❌ Sync error:', err));
 // Routes
 app.use('/', apiRoutes);
 
