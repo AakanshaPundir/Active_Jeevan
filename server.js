@@ -35,13 +35,13 @@ app.use(session({
 }));
 
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 mongoose.connect('', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => console.log("✅ MongoDB Connected"))
-.catch(err => console.error("❌ MongoDB Error:", err));
+.catch(err => console.error("❌ MongoDB Error:", err));*/
 
 
 // Routes
