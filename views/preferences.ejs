@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dietary Preferences</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      color: #333;
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .meals {
+      margin-top: 30px;
+    }
+    .meal {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .meal:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Choose Your Dietary Preferences</h1>
+    <form>
+      <label for="goal">Fitness Goal:</label>
+      <select id="goal">
+        <option value="weight-loss">Weight Loss</option>
+        <option value="muscle-gain">Muscle Gain</option>
+        <option value="maintenance">Maintenance</option>
+      </select>
+
+      <label for="diet">Diet Type:</label>
+      <select id="diet">
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="non-vegetarian">Non-Vegetarian</option>
+      </select>
+
+      <button type="button" id="generate">Generate Meals</button>
+    </form>
+
+    <div class="meals" id="meals-container"></div>
+  </div>
+
+  <script src="/preferences.js" defer></script>
+
+</body>
+</html>

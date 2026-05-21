@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Questionnaire & Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* background: url(https://i.pinimg.com/564x/29/11/a6/2911a6b711b95c9ef61afead1c31c4d7.jpg); */
+            background: url(https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_640.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .option-btn {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 25px;
+            width: 100%;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .next-btn, .checkout-btn, .pay-btn {
+            background-color: #cb808b;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 25px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .selected {
+            border-color: #cb808b;
+            background-color: #dbb2b8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="step1">
+        <h2>What Are Your Fitness Goals?</h2>
+        <div>Choose one</div>
+        <button class="option-btn" onclick="selectOption(this, 'goal')">Lose Some Weight</button>
+        <button class="option-btn" onclick="selectOption(this, 'goal')">Get Stronger</button>
+        <button class="option-btn" onclick="selectOption(this, 'goal')">Be Healthier & Feel Better</button>
+        <button class="option-btn" onclick="selectOption(this, 'goal')">Prep For An Event</button>
+        <button class="option-btn" onclick="selectOption(this, 'goal')">Recover and Rehab</button>
+        <button class="next-btn" onclick="nextStep(2)">Next</button>
+    </div>
+
+    <div id="step2" class="hidden">
+        <h2>How Active Are You Now?</h2>
+        <div>Select one</div>
+        <button class="option-btn" onclick="selectOption(this, 'activity')">I Never Work Out</button>
+        <button class="option-btn" onclick="selectOption(this, 'activity')">It's Been a While</button>
+        <button class="option-btn" onclick="selectOption(this, 'activity')">A Few Times a Week</button>
+        <button class="option-btn" onclick="selectOption(this, 'activity')">Fitness is Part of My Daily Life</button>
+        <button class="next-btn" onclick="nextStep(3)">Next</button>
+    </div>
+
+    <div id="step3" class="hidden">
+        <h2>Select Your Trainer</h2>
+        <div>Choose a personal trainer</div>
+        <button class="option-btn" onclick="selectOption(this, 'trainer')">Trainer A</button>
+        <button class="option-btn" onclick="selectOption(this, 'trainer')">Trainer B</button>
+        <button class="option-btn" onclick="selectOption(this, 'trainer')">Trainer C</button>
+        <button class="option-btn" onclick="selectOption(this, 'trainer')">Trainer D</button>
+        <button class="next-btn" onclick="nextStep(4)">Next</button>
+    </div>
+
+    <div id="step4" class="hidden">
+        <h2>Checkout</h2>
+        <div>Review and confirm your selection</div>
+        <p>Fitness Goal: <span id="selected-goal"></span></p>
+        <p>Activity Level: <span id="selected-activity"></span></p>
+        <p>Trainer: <span id="selected-trainer"></span></p>
+        <button class="checkout-btn" onclick="nextStep(5)">Proceed to Payment</button>
+    </div>
+
+    <div id="step5" class="hidden">
+        <h2>Payment Information</h2>
+        <div>Choose a payment method</div>
+        <button class="option-btn" onclick="showCardPayment()">Pay by Card</button>
+        <button class="option-btn" onclick="showUPIPayment()">Pay by UPI</button>
+
+        <div id="card-payment" class="hidden">
+            <input type="text" class="input-field" placeholder="Cardholder Name" id="cardholder-name">
+            <input type="text" class="input-field" placeholder="Card Number" id="card-number">
+            <input type="text" class="input-field" placeholder="Expiry Date (MM/YY)" id="expiry-date">
+            <input type="text" class="input-field" placeholder="CVV" id="cvv">
+            <button class="pay-btn" onclick="processCardPayment()">Pay Now</button>
+        </div>
+
+        <div id="upi-payment" class="hidden">
+            <input type="text" class="input-field" placeholder="UPI ID" id="upi-id">
+            <button class="pay-btn" onclick="processUPIPayment()">Pay with UPI</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let selectedGoal = "";
+    let selectedActivity = "";
+    let selectedTrainer = "";
+
+    function selectOption(button, category) {
+        let buttons = button.parentNode.querySelectorAll('.option-btn');
+        buttons.forEach(btn => btn.classList.remove('selected'));
+
+        button.classList.add('selected');
+
+        if (category === 'goal') {
+            selectedGoal = button.innerText;
+        } else if (category === 'activity') {
+            selectedActivity = button.innerText;
+        } else if (category === 'trainer') {
+            selectedTrainer = button.innerText;
+        }
+    }
+
+    function nextStep(step) {
+        if (step === 2 && !selectedGoal) {
+            alert("Please select a fitness goal.");
+            return;
+        } else if (step === 3 && !selectedActivity) {
+            alert("Please select an activity level.");
+            return;
+        } else if (step === 4 && !selectedTrainer) {
+            alert("Please select a trainer.");
+            return;
+        }
+
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.add('hidden');
+        document.getElementById('step4').classList.add('hidden');
+        document.getElementById('step5').classList.add('hidden');
+
+        document.getElementById('step' + step).classList.remove('hidden');
+
+        if (step === 4) {
+            document.getElementById("selected-goal").innerText = selectedGoal;
+            document.getElementById("selected-activity").innerText = selectedActivity;
+            document.getElementById("selected-trainer").innerText = selectedTrainer;
+        }
+    }
+
+    function showCardPayment() {
+        document.getElementById('card-payment').style.display = 'block';
+        document.getElementById('upi-payment').style.display = 'none';
+    }
+
+    function showUPIPayment() {
+        document.getElementById('card-payment').style.display = 'none';
+        document.getElementById('upi-payment').style.display = 'block';
+    }
+
+    function processCardPayment() {
+        let cardholderName = document.getElementById("cardholder-name").value;
+        let cardNumber = document.getElementById("card-number").value;
+        let expiryDate = document.getElementById("expiry-date").value;
+        let cvv = document.getElementById("cvv").value;
+
+        if (!cardholderName || !cardNumber || !expiryDate || !cvv) {
+            alert("Please fill in all the card details.");
+        } else {
+            alert("Card payment processed successfully!");
+        }
+    }
+
+    function processUPIPayment() {
+        let upiId = document.getElementById("upi-id").value;
+
+        if (!upiId) {
+            alert("Please enter your UPI ID.");
+        } else {
+            alert("UPI payment processed successfully!");
+        }
+    }
+</script>
+
+</body>
+
+</html>

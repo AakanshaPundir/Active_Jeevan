@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <style>
+        h1{
+            color:white;
+        }
+        h2{
+            color:white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url(https://cdn.pixabay.com/photo/2023/01/10/10/47/space-7709489_640.jpg);
+            background-size: cover;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .tracker {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stage {
+            background-color: #506475;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #1a364e;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+            color:white;
+        }
+
+        .stage.completed {
+            background-color: #90a8be;
+            border-color: #1a364e;
+        }
+
+        .values input {
+            border: 2px solid #1a364e;
+            border-radius: 5px;
+            padding: 5px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .completed-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .trial-chart {
+            margin-top: 30px;
+        }
+
+        .chart-row {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .chart-box {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .chart-box.completed {
+            background-color: #28a745;
+            border-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Progress Tracker</h1>
+    <div class="tracker">
+        <div class="stage" onclick="toggleStage(this)">
+            Exercise Duration
+            <div class="values">
+                <input type="number" placeholder="Min" />
+            </div>
+        </div>
+        <div class="stage" onclick="toggleStage(this)">
+            Calories Burned
+            <div class="values">
+                <input type="number" placeholder="Calories" />
+            </div>
+        </div>
+        <div class="stage" onclick="toggleStage(this)">
+            Steps Taken
+            <div class="values">
+                <input type="number" placeholder="Steps" />
+            </div>
+        </div>
+        <div class="stage" onclick="toggleStage(this)">
+            Water Intake
+            <div class="values">
+                <input type="number" placeholder="Liters" />
+            </div>
+        </div>
+        <div class="stage" onclick="toggleStage(this)">
+            Sleep Quality
+            <div class="values">
+                <input type="number" placeholder="Hours" />
+            </div>
+        </div>
+        <div class="completed-message" id="completedMessage" style="display: none;">
+            All stages completed for today! Well done!
+        </div>
+    </div>
+
+    <div class="trial-chart">
+        <h2>15-Day Free Trial Chart</h2>
+        <div class="chart-row" id="chartRow">
+            <div class="chart-box" id="day1"></div>
+            <div class="chart-box" id="day2"></div>
+            <div class="chart-box" id="day3"></div>
+            <div class="chart-box" id="day4"></div>
+            <div class="chart-box" id="day5"></div>
+            <div class="chart-box" id="day6"></div>
+            <div class="chart-box" id="day7"></div>
+            <div class="chart-box" id="day8"></div>
+            <div class="chart-box" id="day9"></div>
+            <div class="chart-box" id="day10"></div>
+            <div class="chart-box" id="day11"></div>
+            <div class="chart-box" id="day12"></div>
+            <div class="chart-box" id="day13"></div>
+            <div class="chart-box" id="day14"></div>
+            <div class="chart-box" id="day15"></div>
+        </div>
+    </div>
+
+    <script>
+        let completedDays = 0; // Counter for completed days
+
+        function toggleStage(stage) {
+            stage.classList.toggle('completed');
+            checkCompletion();
+        }
+
+        function checkCompletion() {
+            const stages = document.querySelectorAll('.stage');
+            const allCompleted = Array.from(stages).every(stage => stage.classList.contains('completed'));
+
+            if (allCompleted) {
+                document.getElementById('completedMessage').style.display = 'block';
+                markChartBox();
+                resetStages(); // Reset the stages after marking them complete
+            } else {
+                document.getElementById('completedMessage').style.display = 'none';
+            }
+        }
+
+        function markChartBox() {
+            // Increment completed days count and mark the corresponding box green
+            if (completedDays < 15) {
+                const dayBox = document.getElementById(`day${completedDays + 1}`);
+                dayBox.classList.add('completed');
+                completedDays++;
+            }
+        }
+
+        function resetStages() {
+            // Reset all stages to their original state (not completed)
+            const stages = document.querySelectorAll('.stage');
+            stages.forEach(stage => {
+                stage.classList.remove('completed');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            background: url(https://cdn.pixabay.com/photo/2016/11/21/12/39/stars-1845140_1280.jpg);
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: transparent;
+        }
+
+        h2 {
+            color: rgb(115, 115, 233);
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .col {
+            padding: 40px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .col img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            /* margin-bottom: 15px; */
+            margin: 50px;
+        }
+
+        .btn-outline-danger {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            background-color: #fff3f3;
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            background-color: #9799ed;
+        }
+
+        .modal-footer .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .modal-body ul {
+            list-style-type: square;
+        }
+
+        .modal-body h4 {
+            color: #402fab;
+        }
+
+        h1 {
+            margin-top: 100px;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>CHOOSE YOUR TRAINER</h1>
+    </center>
+    <div class="container text-center">
+        <div class="row">
+            <!-- Trainer 1 -->
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Mia Thompson">
+                <h2>Mia Thompson</h2>
+                <p>Specialty: Strength Training & Bodybuilding<br>
+                    Experience: 8+ years<br>
+                    Bio: A certified strength coach, Mia specializes in muscle building and body transformation.<br>
+                </p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">WORKOUT PLANS</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Muscle Building Workout Plan</h3>
+                                <ul>
+                                    <li>Day 1: Chest & Triceps</li>
+                                    <li>Day 2: Back & Biceps</li>
+                                    <li>Day 3: Shoulders & Abs</li>
+                                    <li>Day 4: Legs & Lower Body</li>
+                                    <li>Day 5: Rest or Active Recovery</li>
+                                </ul>
+                                <h4>Recommended Exercises:</h4>
+                                <p>Barbell Bench Press, Dumbbell Shoulder Press, Squats, Deadlifts</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Ethan Patel">
+                <h2>Ethan Patel</h2>
+                <p>Specialty: Functional Fitness & HIIT<br>
+                    Experience: 6+ years<br>
+                    Bio: Ethan is passionate about high-intensity interval training (HIIT) and functional fitness,
+                    creating efficient full-body workouts that help burn fat and improve cardiovascular health.<br>
+                    Certifications: ACE Certified, CFSC<br>
+                    Training Philosophy: “Efficiency is key.”</p><br>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                    data-bs-target="#modalEthan">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalEthan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="modalEthanLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalEthanLabel">HIIT & Functional Fitness Workout Plan
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Functional HIIT Plan</h3>
+                                <ul>
+                                    <li>Day 1: HIIT Full Body</li>
+                                    <li>Day 2: Strength Circuit (Upper Body Focus)</li>
+                                    <li>Day 3: HIIT Cardio & Core</li>
+                                    <li>Day 4: Strength Circuit (Lower Body Focus)</li>
+                                    <li>Day 5: Active Recovery or Mobility Training</li>
+                                </ul>
+                                <h4>Recommended Exercises:</h4>
+                                <p>Burpees, Kettlebell Swings, Mountain Climbers, Battle Ropes</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trainer 3: Lily Zhang -->
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Lily Zhang">
+                <h2>Lily Zhang</h2>
+                <p>Specialty: Yoga & Mindfulness<br>
+                    Experience: 10+ years<br>
+                    Bio: Lily is a certified yoga instructor who teaches flexibility and mindfulness. She helps clients
+                    reduce stress and achieve mental clarity through yoga and meditation.<br>
+                    Certifications: RYT 500, Mindfulness Meditation Instructor<br>
+                    Training Philosophy: “Breathe, stretch, and find your balance.”</p><br>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalLily">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalLily" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="modalLilyLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalLilyLabel">Yoga & Mindfulness Plan</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Weekly Yoga Routine</h3>
+                                <ul>
+                                    <li>Day 1: Hatha Yoga for Flexibility</li>
+                                    <li>Day 2: Mindfulness Meditation</li>
+                                    <li>Day 3: Vinyasa Flow Yoga</li>
+                                    <li>Day 4: Restorative Yoga & Stretching</li>
+                                    <li>Day 5: Mindful Breathing & Meditation</li>
+                                </ul>
+                                <h4>Recommended Exercises:</h4>
+                                <p>Downward Dog, Child’s Pose, Warrior II, Tree Pose</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Trainer 4: Jake Ross -->
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Jake Ross">
+                <h2>Jake Ross</h2>
+                <p>Specialty: Sports Conditioning & Athletic Training<br>
+                    Experience: 7+ years<br>
+                    Bio: Jake develops programs for athletes to improve performance, agility, and endurance.<br>
+                    Certifications: CSCS, Bachelor's in Sports Science<br>
+                    Training Philosophy: “Train hard, perform harder.”</p><br>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalJake">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalJake" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="modalJakeLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalJakeLabel">Athletic Performance Plan</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Athlete Conditioning Routine</h3>
+                                <ul>
+                                    <li>Day 1: Speed & Agility Drills</li>
+                                    <li>Day 2: Strength & Power Training</li>
+                                    <li>Day 3: Endurance Training</li>
+                                    <li>Day 4: Mobility & Flexibility Work</li>
+                                    <li>Day 5: Rest or Active Recovery</li>
+                                </ul>
+                                <h4>Recommended Exercises:</h4>
+                                <p>Box Jumps, Sprints, Agility Ladder, Plyometrics</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trainer 5: Ava Garcia -->
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Ava Garcia">
+                <h2>Ava Garcia</h2>
+                <p>Specialty: Pilates & Core Strengthening<br>
+                    Experience: 5+ years<br>
+                    Bio: Ava focuses on core strengthening and balance, improving posture and muscle tone through
+                    pilates.
+                    Her routines are designed for all levels.<br>
+                    Certifications: Certified Pilates Instructor<br>
+                    Training Philosophy: “Strong core, strong life.”</p><br>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAva">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalAva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="modalAvaLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalAvaLabel">Pilates & Core Strength Plan</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Pilates & Core Strength Plan</h3>
+                                <ul>
+                                    <li>Day 1: Core & Abs Pilates</li>
+                                    <li>Day 2: Balance & Stability Work</li>
+                                    <li>Day 3: Full Body Pilates</li>
+                                    <li>Day 4: Core Endurance & Strength</li>
+                                    <li>Day 5: Active Recovery or Flexibility Training</li>
+                                </ul>
+                                <h4>Recommended Exercises:</h4>
+                                <p>Plank, Side Leg Lifts, Pilates Roll-Up, Pilates 100s</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trainer 6: Liam Anderson -->
+            <div class="col">
+                <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_640.png" alt="Liam Anderson">
+                <h2>Liam Anderson</h2>
+                <p>Specialty: Nutrition & Weight Management<br>
+                    Experience: 9+ years<br>
+                    Bio: Liam specializes in weight management through nutrition and exercise, creating individualized
+                    fat
+                    loss programs.<br>
+                    Certifications: CNS, ISSA Certified Personal Trainer<br>
+                    Training Philosophy: “Fuel your body, achieve your goals.”</p><br>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalLiam">
+                    Access Package
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalLiam" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="modalLiamLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalLiamLabel">Nutrition & Weight Management Plan</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Weight Loss Nutrition Plan</h3>
+                                <ul>
+                                    <li>Day 1: Calorie Deficit Meal Plan (1800 cal)</li>
+                                    <li>Day 2: High Protein Low Carb Day</li>
+                                    <li>Day 3: Intermittent Fasting Day (16:8)</li>
+                                    <li>Day 4: Balanced Carb & Protein Day</li>
+                                    <li>Day 5: Low Fat & Plant-Based Meals</li>
+                                </ul>
+                                <h4>Recommended Foods:</h4>
+                                <p>Lean Chicken, Tofu, Quinoa, Leafy Greens</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Trainer 2: Ethan Patel -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+<%- include('partials/footer') %>
+</html>
