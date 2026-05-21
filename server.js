@@ -1,6 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+
+// ── ADD THIS LINE (was missing) ──────────────────────────────
+const sequelize = require('./config/db');
+// ─────────────────────────────────────────────────────────────
+
 const apiRoutes = require('./routes/apiRoutes');
 const logger = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
@@ -29,20 +35,25 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-    secret: 'your_secret_key',
+    secret: process.env.SESSION_SECRET || process.env.SESSION_SECRET,  // ← use .env
     resave: false,
     saveUninitialized: true
 }));
 
-
-/*const mongoose = require('mongoose');
-mongoose.connect('', {
+// ── MongoDB (keep temporarily) ───────────────────────────────
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => console.log("✅ MongoDB Connected"))
-.catch(err => console.error("❌ MongoDB Error:", err));*/
+.then(() => console.log('✅ MongoDB Connected'))
+.catch(err => console.error('❌ MongoDB Error:', err));
 
+// ── MySQL via Sequelize ──────────────────────────────────────
+sequelize.authenticate()
+  .then(() => console.log('✅ MySQL connected successfully via Sequelize'))
+  .catch(err => console.error('❌ MySQL connection failed:', err.message));
+// ─────────────────────────────────────────────────────────────
 
 // Routes
 app.use('/', apiRoutes);
@@ -50,6 +61,6 @@ app.use('/', apiRoutes);
 // Error handler
 app.use(errorHandler);
 
-app.listen(8080, () => {
-    console.log('🚀 Server running on http://localhost:8080');
+app.listen(process.env.PORT || 8080, () => {
+    console.log(`🚀 Server running on http://localhost:${process.env.PORT || 8080}`);
 });
