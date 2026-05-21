@@ -4,128 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color:#131b2b; /* Black background */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff; /* White text color */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Montserrat', sans-serif;
         }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: white; /* Gold color for the heading */
-            text-shadow: 2px 2px 4px rgba(255, 204, 0, 0.7);
+
+        body{
+            background:#131b2b;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            overflow-y:auto;
+            padding:20px;
         }
-        .error-message {
-            background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent red */
-            color: #fff; /* White text color */
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
+        .container{
+            width:100%;
+            max-width:450px;
         }
-        form {
-            background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 100%;
-            transition: transform 0.3s;
+
+        .form-box{
+            background:rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.4);
         }
-        form:hover {
-            transform: translateY(-5px);
+
+        h1{
+            text-align:center;
+            margin-bottom:25px;
+            color:white;
+            font-size:32px;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: white; /* Gold color for labels */
+
+        .error-message{
+            background:#ff4d4d;
+            color:white;
+            padding:12px;
+            border-radius:8px;
+            margin-bottom:15px;
+            text-align:center;
+            font-size:14px;
         }
-        input[type="text"],
-        input[type="password"],
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid white; /* Gold border */
-            border-radius: 5px;
-            background-color: #222; /* Dark background for inputs */
-            color: #fff; /* White text color for inputs */
-            transition: border-color 0.3s;
+
+        label{
+            display:block;
+            margin-bottom:6px;
+            margin-top:14px;
+            font-weight:600;
+            font-size:14px;
         }
-        input[type="text"]:focus,
-        input[type="password"]:focus,
-        input[type="email"]:focus {
-            border-color: white; /* Gold border on focus */
-            outline: none;
+
+        input{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#222;
+            color:white;
+            outline:none;
+            border:1px solid #444;
+            font-size:14px;
+            transition:0.3s;
         }
-        button {
-            background-color: white; /* Gold button */
-            color: black; /* Black text color for button */
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s;
+
+        input:focus{
+            border:1px solid white;
+            background:#2b2b2b;
         }
-        button:hover {
-            background-color: #e6b800; /* Darker gold on hover */
-            transform: translateY(-2px);
+
+        input::placeholder{
+            color:#aaa;
         }
-        .terms {
-            margin-bottom: 15px;
-            color: #fff; /* White text color for terms */
+
+        button{
+            width:100%;
+            padding:13px;
+            margin-top:22px;
+            border:none;
+            border-radius:8px;
+            background:white;
+            color:black;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
         }
-        a {
-            color: white; /* Gold color for links */
-            text-decoration: none;
+
+        button:hover{
+            background:#ddd;
+            transform:translateY(-2px);
         }
-        a:hover {
-            text-decoration: underline;
+
+        .terms{
+            margin-top:18px;
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            font-size:14px;
+            line-height:1.4;
         }
-        .logo {
-            display: block;
-            margin: 0 auto 20px;
-            width: 100px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+
+        .terms input{
+            width:auto;
+            margin-top:3px;
+        }
+
+        .terms label{
+            margin:0;
+            font-weight:normal;
+        }
+
+        a{
+            color:white;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        a:hover{
+            text-decoration:underline;
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:20px;
+            font-size:14px;
+        }
+
+        @media(max-width:500px){
+
+            .form-box{
+                padding:25px;
+            }
+
+            h1{
+                font-size:28px;
+            }
+
         }
     </style>
 </head>
+
 <body>
-    <div>
-        <h1>Registration Page</h1>
-        <p class="error-message">Invalid username or password. Please register.</p>
-        <form action="/register" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+<div class="container">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+    <div class="form-box">
 
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password">
-            <div class="terms">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the <a href="#">terms and conditions</a></label>
-              
-                <button type="submit">Register</button>
-            </form>
+        <h1>Create Account</h1>
+
+        <% if (typeof error !== 'undefined') { %>
+            <div class="error-message">
+                <%= error %>
             </div>
-            
-            </body>
-            
+        <% } %>
+
+        <form action="/register" method="POST">
+
+            <label for="name">Full Name</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password"
+                placeholder="Create a password"
+                required
+            >
+
+            <label for="age">Age</label>
+            <input 
+                type="number" 
+                id="age" 
+                name="age"
+                placeholder="Enter your age"
+            >
+
+            <label for="weight">Weight (kg)</label>
+            <input 
+                type="number" 
+                step="0.1"
+                id="weight" 
+                name="weight"
+                placeholder="Enter your weight"
+            >
+
+            <label for="height">Height (cm)</label>
+            <input 
+                type="number" 
+                step="0.1"
+                id="height" 
+                name="height"
+                placeholder="Enter your height"
+            >
+
+            <div class="terms">
+                <input 
+                    type="checkbox" 
+                    id="terms" 
+                    required
+                >
+
+                <label for="terms">
+                    I agree to the 
+                    <a href="#">Terms & Conditions</a>
+                </label>
+            </div>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="/login">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
 <%- include('partials/footer') %>
-            </html>
+
+</body>
+</html>
